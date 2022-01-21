@@ -80,6 +80,8 @@
 (global-set-key (kbd "C-c <C-down>") 'duplicate-line)
 (global-set-key (kbd "C-c f") 'forward-whitespace)
 
+;; Save backupds to a central folder
+(setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
 ;; =================================
 ;; || ORG-MODE CONFIGURATION       ||
