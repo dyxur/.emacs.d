@@ -16,7 +16,8 @@
  '(custom-enabled-themes '(dracula))
  '(custom-safe-themes
    '("b4ba3e1bba2e303265eb3e9753215408e75e031f7c894786ad04cabef46ff94c" "824d07981667fd7d63488756b6d6a4036bae972d26337babf7b56df6e42f2bcd" default))
- '(package-selected-packages '(luarocks lsp-mode dracula-theme 2048-game lua-mode)))
+ '(package-selected-packages
+   '(ac-php php-mode corfu paredit use-package luarocks lsp-mode dracula-theme 2048-game lua-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -27,15 +28,37 @@
 ;; =================================
 ;; || EMACS CONFIGURATION          ||
 ;; =================================
+;; setup package and use-package
+(package-initialize)
+
+;; override the default http with https
+(setq package-archives '(("gnu" . "https://elpa.gnu.org/packages/")))
 
 ;; Add the MELPA archive
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 
 ;; Aquire and process needed Packages
-(setq package-list '(lua-mode dracula-theme))
+(setq package-list '(lua-mode dracula-theme use-package))
 
-(package-initialize)
+(use-package corfu
+  :custom
+  (corfu-cycle t)
+  (corfu-auto t)
+  :init
+  (corfu-global-mode))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deffered)
+  :hook
+  (html-mode . lsp)
+  :init
+  (setq lsp-keymap-prefix "C-c l"))
+
+(use-package php-mode
+  :ensure t
+  :mode ("\\.php\\'" . php-mode)
+  :hook (php-mode . lsp-deferred))
 
 (unless package-archive-contents
   (package-refresh-contents))
@@ -44,15 +67,11 @@
   (unless (package-installed-p package)
     (package-install package)))
 
-
 ;; Setup indetation
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 4)
 (setq c-basic-offset 4)
 (setq-default indent-line-function 'insert-tab)
-;; Indentation for lua-mode
-(setq-default lua-indent-level 4)
-
 
 ;; Whitesapce
 (global-whitespace-mode 1)
@@ -82,6 +101,12 @@
 
 ;; Save backupds to a central folder
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
+
+;; =================================
+;; || LUA CONFIGURATION          ||
+;; ================================='
+(setq-default lua-indent-level 4)
+
 
 ;; =================================
 ;; || ORG-MODE CONFIGURATION       ||
