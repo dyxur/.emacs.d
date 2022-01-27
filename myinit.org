@@ -1,0 +1,51 @@
+* EMACS
+** Interface tweaks
+ #+BEGIN_SRC emacs-lisp
+ (setq inhibit-startup-message t)
+ (tool-bar-mode -1)
+ #+END_SRC
+
+** Keyreference
+ #+BEGIN_SRC emacs-lisp
+ (use-package which-key
+   :ensure t
+   :config (which-key-mode))
+ #+END_SRC
+
+** Window navigation
+ #+BEGIN_SRC emacs-lisp
+ (use-package ace-window
+   :ensure t
+   :init
+   (progn
+     (global-set-key [remap other-window] 'ace-window)
+     ))
+ #+END_SRC
+
+** File matching
+ #+BEGIN_SRC emacs-lisp
+ (setq indo-enable-flex-matching t)
+ (setq ido-everywhere t)
+ (ido-mode 1)
+ #+END_SRC
+
+* ORG-MODE
+#+BEGIN_SRC emacs-lisp
+(use-package org-bullets
+  :ensure t
+  :config
+  (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
+
+;; Use org mode by default with files ending in ".org"
+(add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
+
+#+END_SRC
+* TODO
+- [ ] Auto completion
+- [ ] Indentation tweaks
+- [ ] Whitespace tweaks
+- [ ] desktopsavemode
+- [ ] Line duplication
+- [ ] delete selection mdoe
+- [ ] Keyboard shortcuts
+- [ ] Backup directorz
