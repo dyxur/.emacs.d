@@ -81,6 +81,9 @@
 ;; Turn on saving of session
 (desktop-save-mode 1)
 
+;; Turn on line highlight
+(hl-line-mode 1)
+
 ;; Duplicate line down
 (defun duplicate-line()
   (interactive)
