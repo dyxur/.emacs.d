@@ -28,6 +28,11 @@
  (setq ido-everywhere t)
  (ido-mode 1)
  #+END_SRC
+ 
+ ** Line highlighting
+ #+BEGIN_SRC emacs-lisp
+ (hl-line-mode 1)
+ #+END_SRC
 
 * ORG-MODE
 #+BEGIN_SRC emacs-lisp
