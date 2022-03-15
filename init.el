@@ -15,9 +15,9 @@
    ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
  '(custom-enabled-themes '(dracula))
  '(custom-safe-themes
-   '("b4ba3e1bba2e303265eb3e9753215408e75e031f7c894786ad04cabef46ff94c" "824d07981667fd7d63488756b6d6a4036bae972d26337babf7b56df6e42f2bcd" default))
+   '("c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "b4ba3e1bba2e303265eb3e9753215408e75e031f7c894786ad04cabef46ff94c" "824d07981667fd7d63488756b6d6a4036bae972d26337babf7b56df6e42f2bcd" default))
  '(package-selected-packages
-   '(ac-php php-mode corfu paredit use-package luarocks lsp-mode dracula-theme 2048-game lua-mode)))
+   '(which-key ac-php php-mode corfu paredit use-package luarocks lsp-mode dracula-theme 2048-game lua-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -60,12 +60,19 @@
   :mode ("\\.php\\'" . php-mode)
   :hook (php-mode . lsp-deferred))
 
+(use-package which-key
+  :ensure t
+  :config (which-key-mode))
+
 (unless package-archive-contents
   (package-refresh-contents))
 
 (dolist (package package-list)
   (unless (package-installed-p package)
     (package-install package)))
+
+;; Remove toolbar
+(tool-bar-mode -1)
 
 ;; Setup indetation
 (setq-default indent-tabs-mode nil)
