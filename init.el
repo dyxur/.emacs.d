@@ -17,7 +17,7 @@
  '(custom-safe-themes
    '("c1284dd4c650d6d74cfaf0106b8ae42270cab6c58f78efc5b7c825b6a4580417" "b4ba3e1bba2e303265eb3e9753215408e75e031f7c894786ad04cabef46ff94c" "824d07981667fd7d63488756b6d6a4036bae972d26337babf7b56df6e42f2bcd" default))
  '(package-selected-packages
-   '(which-key ac-php php-mode corfu paredit use-package luarocks lsp-mode dracula-theme 2048-game lua-mode)))
+   '(multiple-cursors which-key ac-php php-mode corfu paredit use-package luarocks lsp-mode dracula-theme 2048-game lua-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -63,6 +63,13 @@
 (use-package which-key
   :ensure t
   :config (which-key-mode))
+
+;; https://github.com/magnars/multiple-cursors.el
+(use-package multiple-cursors
+  :ensure t
+  :init
+  (global-set-key (kbd "C-S-c c") 'mc/edit-lines)
+  (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
 
 (unless package-archive-contents
   (package-refresh-contents))
