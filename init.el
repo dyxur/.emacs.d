@@ -128,6 +128,10 @@
 ;; Save backupds to a central folder
 (setq backup-directory-alist '(("." . "~/.emacs.d/backup")))
 
+;; Try to increase long line performance
+(setq bidi-inhibit-bpa t)
+(setq-default bidi-paragraph-direction 'left-to-right)
+
 ;; =================================
 ;; || LUA CONFIGURATION          ||
 ;; ================================='

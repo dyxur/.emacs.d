@@ -45,6 +45,15 @@
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
 #+END_SRC
+
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init
+    (global-flycheck-mode t))
+#+END_SRC
+
 * TODO
 - [ ] Auto completion
 - [ ] Indentation tweaks
@@ -54,3 +63,4 @@
 - [ ] delete selection mdoe
 - [ ] Keyboard shortcuts
 - [ ] Backup directorz
+ 
