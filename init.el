@@ -60,6 +60,7 @@
   :mode ("\\.php\\'" . php-mode)
   :hook (php-mode . lsp-deferred))
 
+;; Shows a list of commands
 (use-package which-key
   :ensure t
   :config (which-key-mode))
@@ -70,6 +71,14 @@
   :init
   (global-set-key (kbd "C-S-c c") 'mc/edit-lines)
   (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click))
+
+;; Adds a browsable kill-ring instead of C-y, M-y, M-y, ...
+(use-package browse-kill-ring
+  :ensure t
+  :init
+  (global-set-key (kbd "M-y") 'browse-kill-ring)
+  (setq-default browse-kill-ring-highlight-current-entry t)
+  (setq-default browse-kill-ring-show-preview t))
 
 (unless package-archive-contents
   (package-refresh-contents))
